@@ -1,0 +1,19 @@
+apply plugin: 'groovy'
+apply plugin: 'application'
+
+mainClassName = "Fun"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.2.2'
+    compile 'org.codehaus.groovy.modules.http-builder:http-builder:0.7.1'
+}
+
+// Groovy console
+task(console, dependsOn: 'classes', type: JavaExec) {
+    main = 'groovy.ui.Console'
+    classpath = sourceSets.main.runtimeClasspath
+}
